@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import {
+  Page, View, getViewById
+} from "tns-core-modules/ui/page/page";
+import { AppService } from "../services/app.service";
+import * as platformModule from "tns-core-modules/platform";
 
 @Component({
   selector: 'app-home',
@@ -6,18 +11,33 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  title = 'pem';
-  private counter = 42;
 
-  constructor() { }
+  // @ViewChild("homeContainer", {
+  //   read: ElementRef,
+  //   static: false
+  // }) homeContainer: ElementRef;
+  width: any;
+  height: any;
+  BottomNavigationHeight: number;
+  
 
-  public getMessage() {
-    return this.counter > 0 ?
-      `${this.counter} taps left` :
-      'Hoorraaay! You unlocked the NativeScript clicker achievement!';
+  constructor(private page: Page, private appService: AppService) { 
+    this.page.actionBarHidden = true;
   }
 
-  public onTap() {
-    this.counter--;
+  loadHeight(){
+    // const BottomNavigationId = <View>getViewById(this.homeContainer.nativeElement, "BottomNavigationId");
+    // this.BottomNavigationHeight = BottomNavigationId.getActualSize().height;
+    this.width = platformModule.screen.mainScreen.widthDIPs;
+    this.height = platformModule.screen.mainScreen.heightDIPs;
+    console.log(this.height);
+    
   }
+
+  ngOnInit() {
+    
+  }
+
+
+
 }

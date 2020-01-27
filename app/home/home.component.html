@@ -1,6 +1,50 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<StackLayout class="p-20">
+<!-- <StackLayout class="p-20">
   <Label text="Tap the button" class="h1 text-center"></Label>
   <Button text="TAP" (tap)="onTap()" class="-primary"></Button>
   <Label [text]="getMessage()" class="h2 text-center" textWrap="true"></Label>
-</StackLayout>
+</StackLayout> -->
+
+
+
+<AbsoluteLayout  (onloaded)="loadHeight()" height="100%" width="100%">
+  <StackLayout width="100%">
+      <BottomNavigation >
+          <TabStrip>
+              <TabStripItem>
+                  <Label text="Size"></Label>
+                  <Image src="res://home"></Image>
+              </TabStripItem>
+              <TabStripItem>
+                  <Label text="Settings"></Label>
+                  <Image src="res://settings"></Image>
+              </TabStripItem>
+              <TabStripItem>
+                  <Label text="Search"></Label>
+                  <Image src="res://search"></Image>
+              </TabStripItem>
+          </TabStrip>
+          <TabContentItem width="100%">
+              <AbsoluteLayout [height]="height - 135" width="100%" >
+                   <app-landing-page></app-landing-page>
+                  <!-- <Label text="{{height}}" class="h2 text-center">
+                  </Label> -->
+              </AbsoluteLayout>
+          </TabContentItem>
+          <TabContentItem>
+              <FlexBoxLayout>
+                  <Label text="Settings Page" class="h2 text-center">
+                  </Label>
+              </FlexBoxLayout>
+          </TabContentItem>
+          <TabContentItem>
+              <FlexBoxLayout>
+                  <Label text="Search Page" class="h2 text-center">
+                  </Label>
+              </FlexBoxLayout>
+          </TabContentItem>
+      </BottomNavigation>
+  </StackLayout>
+
+
+</AbsoluteLayout>
